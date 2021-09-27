@@ -1,0 +1,18 @@
+import groovy.console.ui.SystemOutputInterceptor;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+       System.out.println("Pick a number bettween 1-10");
+       int in  = scanner.nextInt();
+
+
+        if (in < 5) {
+            System.out.println("Good day ahead");
+        } else {
+            System.out.println("Bad day ahead");
+        }
+
