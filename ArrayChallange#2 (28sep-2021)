@@ -1,0 +1,14 @@
+public class Main
+{
+    public static void main(String[] args)
+    {
+
+        String[]cars = {"Camaro","Corvette","Jaguar"};
+
+        System.out.println(cars[2]);
+        
+        //changing the number in this code (-- System.out.println(cars[2]); --) (the number 2 can be changed to 0,1,2 as there are 3 objects in the array 
+        if there where more cars in the array you could change to more numbers depending on how many cars there are)
+
+    }
+}
