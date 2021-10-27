@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Type a number");
+        int in  = scanner.nextInt();
+
+        System.out.println("Type another number");
+        int in1  = scanner.nextInt();
+
+        System.out.println("Type the last number");
+        int in2  = scanner.nextInt();
+
+        System.out.println("The average of the 3 numbers is" + " " + ((in+in1+in2)/3));
+        
+    }
+}
