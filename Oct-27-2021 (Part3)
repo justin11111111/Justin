@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Type a number");
+        int in  = scanner.nextInt();
+
+        System.out.println(in*1);
+        System.out.println(in*2);
+        System.out.println(in*3);
+        System.out.println(in*4);
+        System.out.println(in*5);
+        System.out.println(in*6);
+        System.out.println(in*7);
+        System.out.println(in*8);
+        System.out.println(in*9);
+        System.out.println(in*10);
+        
+    }
+}
