@@ -1,0 +1,13 @@
+public class Main
+{
+    public static void main(String[] args)
+    {
+        for(int a = 0; a <22; a++);
+
+        System.out.print("22 for 2022");
+
+       
+        }
+
+    }
+}
