@@ -1,0 +1,14 @@
+public class Main
+{
+    public static void main(String[] args)
+    {
+
+        int a = 0;
+
+        while (a < 2022) {
+
+           System.out.println("Happy New year 2022");
+        }
+
+    }
+}
