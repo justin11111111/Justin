@@ -108,14 +108,10 @@ public class Main {
                 } else if (input.equals("5")) {
                     System.out.println("You > Hello " + enemy + " I have been brought here by a mysterious creature, could you please spare my life");
                     System.out.println(enemy + " > Let me tell you a story");
-                    System.out.println(enemy + " > One day I was Singing a long to a song");
-                    System.out.println(enemy + " > But as the sun went down the moon went down too");
-                    System.out.println(enemy + " > A saw a car but I thought car did not exist down here");
-                    System.out.println(enemy + " > So I sang along with the car beside me this time");
-                    System.out.println(enemy + " > This poem is not a poem");
-                    System.out.println(enemy + " > its a waste of time");
-                    System.out.println(enemy + " > I hope you enjoy your day");
-                    System.out.println(enemy + " > This time I will let you fly by");
+                    System.out.println(enemy + " > Story...");
+                    System.out.println(enemy + " > Story...");
+                    System.out.println(enemy + " > Story...");
+                    System.out.println(enemy + " > Story...");
                     continue GAME;
                 } else {
                         System.out.println("\tInvalid Command!");
