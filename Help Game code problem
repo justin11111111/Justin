@@ -1,0 +1,189 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        //System Objects
+        Scanner in = new Scanner(System.in);
+        Random rand = new Random();
+
+        //Game Variables
+        String[] enemies = {"Assasin", "Warrior", "Mage", "Ranger"};
+
+        int maxEnemyHp = 100;
+        int enemyAttackDmg = 20;
+
+        //Player Viarables
+        int playerHp = 100;
+        int playerDmg = 25;
+        int playerDmg2 = 10;
+        int playerDmg3 = 10;
+        int numHealthPots = 3;
+        int healthPotHealAmount = 30;
+        int healthPotDropRate = 50; //50 percent
+
+        boolean running = true;
+
+        System.out.println("> You wake up");
+        System.out.println("> You look around and you realize you have been brought down to the depths of hell by a mysterious creature");
+        System.out.println("> Your Aim is to make it out alive, good luck on your adventures");
+
+        System.out.println("------------------------------------------");
+
+        System.out.println("> Big slash Attack can deal up to 25 damage once");
+        System.out.println("> Double Slash can deal up to 15 damage twice");
+
+
+        System.out.println("------------------------------------------");
+
+        GAME:
+        while (running) {
+
+            int enemyHP = rand.nextInt(maxEnemyHp);
+            String enemy = enemies[rand.nextInt(enemies.length)];
+            System.out.println("\t# " + enemy + " has appeared! #\n");
+
+            while (enemyHP > 0) {
+                System.out.println("\tYour HP: " + playerHp);
+                System.out.println("\t" + enemy + "'s HP " + enemyHP);
+                System.out.println("\n\tWhat would you like to do?");
+                System.out.println("\t1. Big Slash");
+                System.out.println("\t2. Double Slash");
+                System.out.println("\t3. Drink Health Potion");
+                System.out.println("\t4. Escape");
+                System.out.println("\t5. Talk to " + enemy);
+
+
+                String input = in.nextLine();
+                if (input.equals("1")) {
+                    int damageDealt = rand.nextInt(playerDmg);
+                    int damageTaken = rand.nextInt(enemyAttackDmg);
+
+                    enemyHP -= damageDealt;
+                    playerHp -= damageTaken;
+
+                    System.out.println("\t> You used Big Slash on the " + enemy + " For " + damageDealt + " Damage.");
+                    System.out.println("\t> You Have Taken " + damageTaken + " Damage From a " + enemy + ".");
+
+                    if (playerHp <= 1) {
+                        System.out.println("You Took to much Damage");
+                        break;
+                    }
+
+                } else if (input.equals("2")) {
+                    int damageDealt2 = rand.nextInt(playerDmg2);
+                    int damageDealt3 = rand.nextInt(playerDmg3);
+                    int damageTaken2 = rand.nextInt(enemyAttackDmg);
+
+                    enemyHP -= damageDealt2;
+                    enemyHP -= damageDealt3;
+                    playerHp -= damageTaken2;
+
+                    System.out.println("\t> You Slashed once on " + enemy + " For " + damageDealt2 + " Damage.");
+                    System.out.println("\t> You Slashed again on " + enemy + " For " + damageDealt3 + " Damage.");
+                    System.out.println("\t> You Have Taken " + damageTaken2 + " Damage From a " + enemy + ".");
+
+                    if (playerHp <= 1) {
+                        System.out.println("You Took to much Damage");
+                        break;
+
+                    }
+
+                } else if (input.equals("3")) {
+                    if (numHealthPots > 0) {
+                        playerHp += healthPotHealAmount;
+                        numHealthPots--;
+                        System.out.println("\t> You Drinked a Health potion healing you for " + healthPotHealAmount + "."
+                                + "\n\t> You now have " + playerHp + " HP."
+                                + "\n\t> You have " + numHealthPots + " health potions left.\n");
+                    } else {
+                        System.out.println("\t> you have no health potions left!");
+                    }
+
+                } else if (input.equals("4")) {
+                    System.out.println("\tYou have escaped from " + enemy + "!");
+                    continue GAME;
+
+                } else if (input.equals("5")) {
+                    System.out.println("You > Hello " + enemy + " I have been brought here by a mysterious creature, could you please spare my life");
+                    System.out.println(enemy + " > Hello");
+                    System.out.println(enemy + " > I shall spare your life today");
+                    System.out.println(enemy + " > But first you have to guess the word to my riddle ");
+                    System.out.println(enemy + " > Riddle: What has a lake but no water?");
+                    System.out.println(enemy + " > Write the answer in the number corresponding with the right answer. example: (type in console) 2");
+                    System.out.println(enemy + " > 1. A leaf");
+                    System.out.println(enemy + " > 2. A tree");
+                    System.out.println(enemy + " > 3. A compass");
+                    System.out.println(enemy + " > 4. A Map");
+                    System.out.println(enemy + " > Hint: Starts with letter M");
+
+
+                    if (input.equals("1")) {
+                        System.out.println("Wrong!");
+                        System.out.println("Try Again");
+                        System.out.println("You Died!");
+                        break;
+
+                    }
+                    else if (input.equals("2")) {
+                        System.out.println("Wrong!");
+                        System.out.println("Try Again");
+                    }
+                    else if (input.equals("3")) {
+                        System.out.println("Wrong!");
+                        System.out.println("Try Again");
+                    }
+                    else if (input.equals("4")) {
+                        System.out.println("Correct!");
+                        continue GAME;
+                    }
+                }
+
+                else {
+                        System.out.println("\tInvalid Command!");
+                    }
+
+                }
+
+
+                if (playerHp <= 1) {
+                    System.out.println("YOU HAVE DIED!");
+                    break;
+                }
+                System.out.println("------------------------------------------");
+                System.out.println("# " + enemy + " has been defeated! #");
+                System.out.println("# You have " + playerHp + " HP Left. #");
+                if (rand.nextInt(100) < healthPotDropRate) {
+                    numHealthPots++;
+                    System.out.println("# You have recived 1 health potion from killing The " + enemy + " #");
+                    System.out.println("# You have " + numHealthPots + " health Potion(s) #");
+
+                }
+
+                System.out.println("------------------------------------------");
+                System.out.println("What would you like to do now");
+                System.out.println("1. Continue Fighting");
+                System.out.println("2. Exit Dungeon");
+
+                String input = in.nextLine();
+
+                while (!input.equals("1") && !input.equals("2")) ;
+                {
+                    System.out.println("Invalid Command!");
+                }
+
+                if (input.equals("1")) {
+                    System.out.println("You continue on your adventure!");
+                } else if (input.equals("2")) {
+                    System.out.println("You exit the dungeon, successful from your adventures");
+                    break;
+                }
+            }
+
+            System.out.println("-----------------------");
+            System.out.println("> Thanks for Playing <");
+            System.out.println("-----------------------");
+
+        }
+    }
