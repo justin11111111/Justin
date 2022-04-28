@@ -1,0 +1,53 @@
+import java.util.Scanner;
+import java.util.*;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+
+
+        Scanner in = new Scanner(System.in);
+
+
+        //Variables
+        int Lives = 10;
+        String[] usedLetters = {};
+
+        String[] word = { "arteries","capillaries","joints","nerves","skin","tendons","cerebellum","liver",
+                "nasal cavity","spleen","tongue", "appendix","diaphragm","lungs","thyroid","adrenal glands",
+                "ears","larynx","stomach","trachea","brain","eyes","ligaments","spinal cord","bones","pancreas",
+                "small intestine","bronchi","pharynx","salivary glands","bladder","gallbladder","skeletal muscles",
+                "heart","mouth","hair follicle","veins","nose","kidneys","nails" };
+
+
+        System.out.println("-----------------------------------------");
+        System.out.println("--         Welcome to HangMan          --");
+        System.out.println("--You currently have 10 lives remaining--");
+        System.out.println("-----------------------------------------");
+
+        System.out.println("the dashes below is the length of your word, GoodLuck!");
+        //Word selector - picks random word
+        Random random = new Random();
+        int index = random.nextInt(word.length);
+        //make copy of word
+        String wordCopy = (word[index]);
+        //Replace word with Dash
+        System.out.println(word[index].replaceAll("[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]", "_"));
+        System.out.println(wordCopy);
+
+        //user input
+        String input = in.nextLine();
+
+        //checked guessed word is the hangman word
+        if (in.equals(wordCopy)) {
+            System.out.println("You guessed the word correct");
+        } else {
+            System.out.println("The letter you choose is not in the word");
+        }
+        
+
+    }
+}
