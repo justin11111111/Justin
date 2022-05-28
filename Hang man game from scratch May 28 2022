@@ -1,0 +1,88 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+
+        Scanner in = new Scanner(System.in);
+
+
+//Variables
+        int Lives = 9;
+        String[] usedLetters = {};
+
+        String[] word = { "arteries","capillaries","joints","nerves","skin","tendons","cerebellum","liver",
+                "nasal cavity","spleen","tongue", "appendix","diaphragm","lungs","thyroid","adrenal glands",
+                "ears","larynx","stomach","trachea","brain","eyes","ligaments","spinal cord","bones","pancreas",
+                "small intestine","bronchi","pharynx","salivary glands","bladder","gallbladder","skeletal muscles",
+                "heart","mouth","hair follicle","veins","nose","kidneys","nails" };
+
+
+        System.out.println("-----------------------------------------");
+        System.out.println("--         Welcome to HangMan          --");
+        System.out.println("--You currently have 10 lives remaining--");
+        System.out.println("-----------------------------------------");
+
+        System.out.println("the dashes below is the length of your word, GoodLuck!");
+
+//Word selector - picks random word
+        Random random = new Random();
+        int index = random.nextInt(word.length);
+
+//make copy of word
+        String wordCopy = (word[index]);
+
+        //Replace word with Dash
+        String Dashes = word[index].replaceAll("[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]", "_");
+        System.out.println(Dashes);
+        System.out.println(wordCopy);
+
+//new variable check = wordCopy
+        String check =  (wordCopy);
+
+// when lives is less or equal to 9 and lives is greater than 0 continue this loop/game
+        while(Lives <= 9 && Lives >=0)  {
+
+//user input
+    String input = in.nextLine();
+
+//check if user has inputted something
+    if (check.contains(input)) {
+
+        System.out.println("Yes! the letter you guessed is in the hangman in position ");
+//position string
+
+        while (check.contains(input)) {
+
+            int position = check.indexOf(input);
+            
+//Replace dash with guessed  char
+            String newWord = Dashes.substring(0, position) + input + Dashes.substring(position + 1);
+            Dashes = newWord;
+
+            String Ash = check.substring(0, position) + "*" + check.substring(position + 1);
+
+            check = Ash;
+        }
+        System.out.println(Dashes);
+        System.out.println(check);
+    }
+    if (!(Dashes.contains("_"))) {
+
+        System.out.println("You have won!");
+        break;
+    }
+    if (Lives == 0) {
+        System.out.println("You have lost hahahaha");
+        break;
+    }
+
+    else {
+        System.out.println("Try again");
+        Lives--;
+    }
+        }
+    }
+}
